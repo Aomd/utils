@@ -188,6 +188,19 @@ exports.average = average;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.language = void 0;
+
+var language = function language() {
+  return (navigator.browserLanguage || navigator.language).toLowerCase();
+};
+
+exports.language = language;
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.formatTime = void 0;
 var _arguments = arguments;
 
@@ -232,7 +245,7 @@ var formatTime = function formatTime(time, cFormat) {
 };
 
 exports.formatTime = formatTime;
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -496,7 +509,7 @@ var changeToChinese = function changeToChinese(Num) {
 };
 
 exports.changeToChinese = changeToChinese;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -584,7 +597,7 @@ var isTrue = function isTrue(o) {
 };
 
 exports.isTrue = isTrue;
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -634,7 +647,7 @@ var UrlToObject = function UrlToObject(str) {
 };
 
 exports.UrlToObject = UrlToObject;
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -642,7 +655,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
+exports.Browser = exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
 
 var Type = _interopRequireWildcard(require("./Type"));
 
@@ -664,10 +677,14 @@ var Url = _interopRequireWildcard(require("./Url"));
 
 exports.Url = Url;
 
+var Browser = _interopRequireWildcard(require("./Browser"));
+
+exports.Browser = Browser;
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-},{"./Array":1,"./Date":2,"./Number":3,"./Type":4,"./Url":5}],7:[function(require,module,exports){
+},{"./Array":1,"./Browser":2,"./Date":3,"./Number":4,"./Type":5,"./Url":6}],8:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -685,4 +702,4 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     throw new Error('window is not defined');
   }
 })(window);
-},{"./main":6}]},{},[7]);
+},{"./main":7}]},{},[8]);

@@ -55,3 +55,8 @@ export const isFalse = (o) => {
 export const isTrue = (o) => {
   return !this.isFalse(o)
 }
+
+// 是否是dom
+export const isElement = (o) => {
+  return Object.prototype.toString.call(o).indexOf('Element') > -1
+}

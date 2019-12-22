@@ -19,6 +19,8 @@ import * as Url from './Url';
 // 浏览器信息
 import * as Browser from './Browser'
 
+// object
+import * as Object from './Object'
 
 
 export{
@@ -28,4 +30,5 @@ export{
   Number,
   Url,
   Browser,
+  Object,
 }

@@ -53,7 +53,13 @@ export const sort = (arr, type = 1) => {
   })
 }
 
-/*去重*/
+
+/**
+*去重
+*
+* @param {Array} arr
+* @returns
+*/
 export const unique = (arr) => {
   if (Array.hasOwnProperty('from')) {
     return Array.from(new Set(arr));
@@ -69,13 +75,26 @@ export const unique = (arr) => {
   }
 }
 
-/*求两个集合的并集*/
+
+/**
+*求两个集合的并集
+*
+* @param {Array} a
+* @param {Array} b
+* @returns
+*/
 export const union = (a, b) => {
   var newArr = a.concat(b);
   return this.unique(newArr);
 }
 
-/*求两个集合的交集*/
+/**
+ *求两个集合的交集
+ *
+ * @param {*} a
+ * @param {*} b
+ * @returns
+ */
 export const intersect = (a, b) => {
   var _this = this;
   a = this.unique(a);
@@ -84,7 +103,13 @@ export const intersect = (a, b) => {
   });
 }
 
-/*删除其中一个元素*/
+/**
+*删除其中一个元素
+*
+* @param {*} arr
+* @param {*} ele
+* @returns
+*/
 export const remove = (arr, ele) => {
   var index = arr.indexOf(ele);
   if (index > -1) {
@@ -93,7 +118,12 @@ export const remove = (arr, ele) => {
   return arr;
 }
 
-/*将类数组转换为数组的方法*/
+/**
+ *将类数组转换为数组的方法
+ *
+ * @param {*} ary
+ * @returns
+ */
 export const formArray = (ary) => {
   var arr = [];
   if (Array.isArray(ary)) {
@@ -104,24 +134,57 @@ export const formArray = (ary) => {
   return arr;
 }
 
-/*最大值*/
+
+/**
+ *最大值
+ *
+ * @param {*} arr
+ * @returns
+ */
 export const max = (arr) => {
   return Math.max.apply(null, arr);
 }
 
-/*最小值*/
+/**
+ *最小值
+ *
+ * @param {*} arr
+ * @returns
+ */
 export const min = (arr) => {
   return Math.min.apply(null, arr);
 }
 
-/*求和*/
+/**
+ *求和
+ *
+ * @param {*} arr
+ * @returns
+ */
 export const sum = (arr) => {
   return arr.reduce((pre, cur) => {
     return pre + cur
   })
 }
 
-/*平均值*/
+/**
+ *平均值
+ *
+ * @param {*} arr
+ * @returns
+ */
 export const average = (arr) => {
   return this.sum(arr) / arr.length
+}
+
+
+
+/**
+ *根据条件取出值
+ *
+ * @param {*} a
+ * @param {*} w
+ */
+export const where = (a, w) => {
+
 }

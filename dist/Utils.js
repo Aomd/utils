@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.average = exports.sum = exports.min = exports.max = exports.formArray = exports.remove = exports.intersect = exports.union = exports.unique = exports.sort = exports.map = exports.each = void 0;
+exports.where = exports.average = exports.sum = exports.min = exports.max = exports.formArray = exports.remove = exports.intersect = exports.union = exports.unique = exports.sort = exports.map = exports.each = void 0;
 
 var _arguments = arguments,
     _this2 = void 0;
@@ -72,7 +72,12 @@ var sort = function sort(arr) {
     }
   });
 };
-/*去重*/
+/**
+*去重
+*
+* @param {Array} arr
+* @returns
+*/
 
 
 exports.sort = sort;
@@ -94,7 +99,13 @@ var unique = function unique(arr) {
     return r;
   }
 };
-/*求两个集合的并集*/
+/**
+*求两个集合的并集
+*
+* @param {Array} a
+* @param {Array} b
+* @returns
+*/
 
 
 exports.unique = unique;
@@ -103,7 +114,13 @@ var union = function union(a, b) {
   var newArr = a.concat(b);
   return _this2.unique(newArr);
 };
-/*求两个集合的交集*/
+/**
+ *求两个集合的交集
+ *
+ * @param {*} a
+ * @param {*} b
+ * @returns
+ */
 
 
 exports.union = union;
@@ -115,7 +132,13 @@ var intersect = function intersect(a, b) {
     return _this.contains(b, o) ? o : null;
   });
 };
-/*删除其中一个元素*/
+/**
+*删除其中一个元素
+*
+* @param {*} arr
+* @param {*} ele
+* @returns
+*/
 
 
 exports.intersect = intersect;
@@ -129,7 +152,12 @@ var remove = function remove(arr, ele) {
 
   return arr;
 };
-/*将类数组转换为数组的方法*/
+/**
+ *将类数组转换为数组的方法
+ *
+ * @param {*} ary
+ * @returns
+ */
 
 
 exports.remove = remove;
@@ -146,7 +174,12 @@ var formArray = function formArray(ary) {
   ;
   return arr;
 };
-/*最大值*/
+/**
+ *最大值
+ *
+ * @param {*} arr
+ * @returns
+ */
 
 
 exports.formArray = formArray;
@@ -154,7 +187,12 @@ exports.formArray = formArray;
 var max = function max(arr) {
   return Math.max.apply(null, arr);
 };
-/*最小值*/
+/**
+ *最小值
+ *
+ * @param {*} arr
+ * @returns
+ */
 
 
 exports.max = max;
@@ -162,7 +200,12 @@ exports.max = max;
 var min = function min(arr) {
   return Math.min.apply(null, arr);
 };
-/*求和*/
+/**
+ *求和
+ *
+ * @param {*} arr
+ * @returns
+ */
 
 
 exports.min = min;
@@ -172,7 +215,12 @@ var sum = function sum(arr) {
     return pre + cur;
   });
 };
-/*平均值*/
+/**
+ *平均值
+ *
+ * @param {*} arr
+ * @returns
+ */
 
 
 exports.sum = sum;
@@ -180,8 +228,19 @@ exports.sum = sum;
 var average = function average(arr) {
   return _this2.sum(arr) / arr.length;
 };
+/**
+ *根据条件取出值
+ *
+ * @param {*} a
+ * @param {*} w
+ */
+
 
 exports.average = average;
+
+var where = function where(a, w) {};
+
+exports.where = where;
 },{}],2:[function(require,module,exports){
 "use strict";
 
@@ -515,7 +574,28 @@ exports.changeToChinese = changeToChinese;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isTrue = exports.isFalse = exports.isUndefined = exports.isNull = exports.isFunction = exports.isBoolean = exports.isDate = exports.isArray = exports.isObj = exports.isNumber = exports.isString = void 0;
+exports.pluck = exports.size = exports.clone = void 0;
+
+var clone = function clone() {};
+
+exports.clone = clone;
+
+var size = function size(o) {
+  return Object.keys(o).length;
+};
+
+exports.size = size;
+
+var pluck = function pluck() {};
+
+exports.pluck = pluck;
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isElement = exports.isTrue = exports.isFalse = exports.isUndefined = exports.isNull = exports.isFunction = exports.isBoolean = exports.isDate = exports.isArray = exports.isObj = exports.isNumber = exports.isString = void 0;
 
 var _this = void 0;
 
@@ -594,10 +674,17 @@ exports.isFalse = isFalse;
 
 var isTrue = function isTrue(o) {
   return !_this.isFalse(o);
-};
+}; // 是否是dom
+
 
 exports.isTrue = isTrue;
-},{}],6:[function(require,module,exports){
+
+var isElement = function isElement(o) {
+  return Object.prototype.toString.call(o).indexOf('Element') > -1;
+};
+
+exports.isElement = isElement;
+},{}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -647,7 +734,7 @@ var UrlToObject = function UrlToObject(str) {
 };
 
 exports.UrlToObject = UrlToObject;
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -655,7 +742,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Browser = exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
+exports.Object = exports.Browser = exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
 
 var Type = _interopRequireWildcard(require("./Type"));
 
@@ -681,10 +768,14 @@ var Browser = _interopRequireWildcard(require("./Browser"));
 
 exports.Browser = Browser;
 
+var Object = _interopRequireWildcard(require("./Object"));
+
+exports.Object = Object;
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-},{"./Array":1,"./Browser":2,"./Date":3,"./Number":4,"./Type":5,"./Url":6}],8:[function(require,module,exports){
+},{"./Array":1,"./Browser":2,"./Date":3,"./Number":4,"./Object":5,"./Type":6,"./Url":7}],9:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -702,4 +793,4 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     throw new Error('window is not defined');
   }
 })(window);
-},{"./main":7}]},{},[8]);
+},{"./main":8}]},{},[9]);

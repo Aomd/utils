@@ -8,7 +8,7 @@ import * as Type from './Type';
 import * as Date from './Date';
 
 // 处理array
-import * as  Array from './Array';
+import * as Array from './Array';
 
 // 处理数字
 import * as Number from './Number';
@@ -22,8 +22,10 @@ import * as Browser from './Browser'
 // object
 import * as Object from './Object'
 
+// 浏览器兼容 加强
+import * as BrowserExtend from './BrowserExtend/base'
 
-export{
+export {
   Type,
   Date,
   Array,
@@ -31,4 +33,5 @@ export{
   Url,
   Browser,
   Object,
+  BrowserExtend
 }

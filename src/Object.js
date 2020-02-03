@@ -25,7 +25,7 @@ export const pluck = () => {
 }
 
 /**
-* 获取
+* 尝试获取一个未知对象
 *
 * @param {String} pototype 要找的原型链
 * @param {String|Array|Number|Array|Object} defined 默认值

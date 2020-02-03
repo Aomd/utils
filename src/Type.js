@@ -43,6 +43,10 @@ export const isUndefined = (o) => {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Undefined'
 }
 
+export const isBlob = (o) =>{
+  return Object.prototype.toString.call(o).slice(8, -1) === 'Blob'
+}
+
 export const isFalse = (o) => {
   if (o == '' || o == undefined || o == null || o == 'null' || o == 'undefined' || o == 0 || o == false || o == NaN) {
     return true

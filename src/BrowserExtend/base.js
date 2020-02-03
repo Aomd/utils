@@ -10,3 +10,5 @@ export{
 
 import './screen';
 import './requestAniFrame';
+
+import './alert'

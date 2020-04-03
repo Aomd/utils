@@ -3,7 +3,7 @@
 * @param  {string} str 
 * @return {Object} obj
 */
-export const UrlToObject = (str) => {
+export const urlToObject = (str) => {
   var obj = {};
   var index = str.indexOf('?');
   if (index > -1) {
@@ -15,4 +15,17 @@ export const UrlToObject = (str) => {
     }
   }
   return obj
+}
+
+// base64转blob
+export const base64toBlob = (dataurl) => {
+  var arr = dataurl.split(',')
+  var mime = arr[0].match(/:(.*?);/)[1];
+  var bstr = atob(arr[1]);
+  var n = bstr.length;
+  var u8arr = new Uint8Array(n)
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
 }

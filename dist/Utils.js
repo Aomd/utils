@@ -247,14 +247,178 @@ exports.where = where;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.language = void 0;
+exports.isPC = exports.getDeviceOS = exports.getBrowserType = exports.language = void 0;
+var u = navigator.userAgent; // 语言
 
 var language = function language() {
   return (navigator.browserLanguage || navigator.language).toLowerCase();
 };
+/**
+ *
+ *
+ * @returns
+ */
+
 
 exports.language = language;
+
+var getBrowserType = function getBrowserType() {
+  return {
+    trident: u.indexOf('Trident') > -1,
+    //IE内核  
+    presto: u.indexOf('Presto') > -1,
+    //opera内核  
+    webKit: u.indexOf('AppleWebKit') > -1,
+    //苹果、谷歌内核  
+    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,
+    //火狐内核  
+    mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+    //是否为移动终端  
+    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+    //ios终端  
+    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+    //android终端或者uc浏览器  
+    iPhone: u.indexOf('iPhone') > -1,
+    //是否为iPhone或者QQHD浏览器  
+    iPad: u.indexOf('iPad') > -1,
+    //是否iPad    
+    webApp: u.indexOf('Safari') == -1,
+    //是否web应该程序，没有头部与底部  
+    weixin: u.indexOf('MicroMessenger') > -1,
+    //是否微信   
+    qq: u.match(/\sQQ/i) == " qq" //是否QQ
+
+  };
+};
+/**
+ *
+ *
+ * @returns
+ */
+
+
+exports.getBrowserType = getBrowserType;
+
+var getDeviceOS = function getDeviceOS() {
+  var isWin = navigator.platform == "Win32" || navigator.platform == "Windows";
+  var isMac = navigator.platform == "Mac68K" || navigator.platform == "MacPPC" || navigator.platform == "Macintosh" || navigator.platform == "MacIntel";
+  if (isMac) return "Mac";
+  var isUnix = navigator.platform == "X11" && !isWin && !isMac;
+  if (isUnix) return "Unix";
+  var isLinux = String(navigator.platform).indexOf("Linux") > -1;
+  if (isLinux) return "Linux";
+
+  if (isWin) {
+    var isWin2K = u.indexOf("Windows NT 5.0") > -1 || u.indexOf("Windows 2000") > -1;
+    if (isWin2K) return "Win2000";
+    var isWinXP = u.indexOf("Windows NT 5.1") > -1 || u.indexOf("Windows XP") > -1;
+    if (isWinXP) return "WinXP";
+    var isWin2003 = u.indexOf("Windows NT 5.2") > -1 || u.indexOf("Windows 2003") > -1;
+    if (isWin2003) return "Win2003";
+    var isWinVista = u.indexOf("Windows NT 6.0") > -1 || u.indexOf("Windows Vista") > -1;
+    if (isWinVista) return "WinVista";
+    var isWin7 = u.indexOf("Windows NT 6.1") > -1 || u.indexOf("Windows 7") > -1;
+    if (isWin7) return "Win7";
+    var isWin10 = u.indexOf("Windows NT 10") > -1 || u.indexOf("Windows 10") > -1;
+    if (isWin10) return "Win10";
+  }
+
+  return "other";
+};
+/**
+ *
+ *
+ * @returns
+ */
+
+
+exports.getDeviceOS = getDeviceOS;
+
+var isPC = function isPC() {
+  return getBrowserType().android || getBrowserType().iPad || getBrowserType().iPhone;
+};
+
+exports.isPC = isPC;
 },{}],3:[function(require,module,exports){
+"use strict";
+
+var _base = require("./base");
+
+_base.w.alert = function () {
+  for (var _len = arguments.length, arg = new Array(_len), _key = 0; _key < _len; _key++) {
+    arg[_key] = arguments[_key];
+  }
+
+  console.log('alert:' + arg);
+};
+},{"./base":4}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.w = exports.el = exports.d = void 0;
+
+require("./screen");
+
+require("./requestAniFrame");
+
+require("./alert");
+
+var d = document;
+exports.d = d;
+var el = 'documentElement';
+exports.el = el;
+var w = window;
+exports.w = w;
+},{"./alert":3,"./requestAniFrame":5,"./screen":6}],5:[function(require,module,exports){
+"use strict";
+
+var _base = require("./base");
+
+_base.w.requestAniFrame = function () {
+  return _base.w.requestAnimationFrame; // Older versions Chrome/Webkit
+
+  _base.w.webkitRequestAnimationFrame || // Firefox < 23
+  _base.w.mozRequestAnimationFrame || // opera
+  _base.w.oRequestAnimationFrame || // ie
+  _base.w.msRequestAnimationFrame || function (callback) {
+    return _base.w.setTimeout(callback, 1000 / 60);
+  };
+}();
+
+_base.w.cancelAnimation = function () {
+  return _base.w.cancelAnimationFrame || _base.w.mozCancelAnimationFrame || _base.w.cancelRequestAnimationFrame || function (id) {
+    clearTimeout(id);
+  };
+}();
+},{"./base":4}],6:[function(require,module,exports){
+"use strict";
+
+var _base = require("./base");
+
+_base.w.screen.openFullScreen = function () {
+  _base.d[_base.el].requestFullscreen ? _base.d[_base.el].requestFullscreen() : _base.d[_base.el].msRequestFullscreen ? _base.d[_base.el].msRequestFullscreen() : _base.d[_base.el].mozRequestFullScreen ? _base.d[_base.el].mozRequestFullScreen() : _base.d[_base.el].webkitRequestFullscreen && _base.d[_base.el].webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+  log('进入全屏');
+};
+
+_base.w.screen.closeFullScreen = function () {
+  if (this.isFullScreen()) {
+    return _base.d.exitFullscreen ? _base.d.exitFullscreen() : _base.d.msExitFullscreen ? _base.d.msExitFullscreen() : _base.d.mozCancelFullScreen ? _base.d.mozCancelFullScreen() : _base.d.webkitExitFullscreen && _base.d.webkitExitFullscreen();
+  }
+};
+
+_base.w.screen.isFullScreen = function () {
+  // 判断是否全屏
+  if (_base.d.fullscreenElement || _base.d.webkitFullscreenElement || _base.d.mozFullScreenElement || _base.d.msFullscreenElement) {
+    // 全屏
+    return true;
+  } else {
+    // 不是全屏
+    return false;
+  }
+};
+},{"./base":4}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -304,7 +468,7 @@ var formatTime = function formatTime(time, cFormat) {
 };
 
 exports.formatTime = formatTime;
-},{}],4:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -568,15 +732,30 @@ var changeToChinese = function changeToChinese(Num) {
 };
 
 exports.changeToChinese = changeToChinese;
-},{}],5:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.pluck = exports.size = exports.clone = void 0;
+exports.getDefined = exports.pluck = exports.size = exports.clone = void 0;
 
-var clone = function clone() {};
+/**
+ * 克隆对象
+ *
+ * @param {Object} o
+ * @returns {Object}
+ */
+var clone = function clone(o) {
+  return JSON.parse(JSON.stringify(o));
+};
+/**
+* 获取对象key数量
+*
+* @param {Object} o
+* @returns {Number}
+*/
+
 
 exports.clone = clone;
 
@@ -587,9 +766,48 @@ var size = function size(o) {
 exports.size = size;
 
 var pluck = function pluck() {};
+/**
+* 获取
+*
+* @param {String} pototype 要找的原型链
+* @param {String|Array|Number|Array|Object} defined 默认值
+* @returns {Object}
+*/
+
 
 exports.pluck = pluck;
-},{}],6:[function(require,module,exports){
+
+var getDefined = function getDefined(pototype, defined) {
+  if (typeof pototype !== 'string') {
+    return defined;
+  }
+
+  var pototypeArray = pototype.split('.');
+  var baseItem = '';
+
+  try {
+    if (/[a-z|A-Z|0-9|_]+/.test(pototypeArray[0])) {
+      baseItem = eval(pototypeArray[0]);
+    } else {
+      return defined;
+    }
+
+    for (var i = 1; i < pototypeArray.length; i++) {
+      if (pototypeArray[i] in baseItem) {
+        baseItem = baseItem[pototypeArray[i]];
+      } else {
+        return defined;
+      }
+    }
+
+    return baseItem;
+  } catch (error) {
+    return defined;
+  }
+};
+
+exports.getDefined = getDefined;
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -684,7 +902,7 @@ var isElement = function isElement(o) {
 };
 
 exports.isElement = isElement;
-},{}],7:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -734,7 +952,7 @@ var UrlToObject = function UrlToObject(str) {
 };
 
 exports.UrlToObject = UrlToObject;
-},{}],8:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -742,7 +960,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Object = exports.Browser = exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
+exports.BrowserExtend = exports.Object = exports.Browser = exports.Url = exports.Number = exports.Array = exports.Date = exports.Type = void 0;
 
 var Type = _interopRequireWildcard(require("./Type"));
 
@@ -772,10 +990,14 @@ var Object = _interopRequireWildcard(require("./Object"));
 
 exports.Object = Object;
 
+var BrowserExtend = _interopRequireWildcard(require("./BrowserExtend/base"));
+
+exports.BrowserExtend = BrowserExtend;
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-},{"./Array":1,"./Browser":2,"./Date":3,"./Number":4,"./Object":5,"./Type":6,"./Url":7}],9:[function(require,module,exports){
+},{"./Array":1,"./Browser":2,"./BrowserExtend/base":4,"./Date":7,"./Number":8,"./Object":9,"./Type":10,"./Url":11}],13:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -793,4 +1015,4 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     throw new Error('window is not defined');
   }
 })(window);
-},{"./main":8}]},{},[9]);
+},{"./main":12}]},{},[13]);

@@ -1,16 +1,20 @@
 var u = navigator.userAgent
 
-// 语言
-export const language = () => {
+/**
+ * 获取浏览器语言
+ *
+ * @returns {String} 当前浏览器语言
+ */
+function getLanguage(){
   return (navigator.browserLanguage || navigator.language).toLowerCase()
 }
 
 /**
+ * 获取当前浏览器类型
  *
- *
- * @returns
+ * @returns {Object}
  */
-export const getBrowserType = () => {
+function getBrowserType(){
   return {
     trident: u.indexOf('Trident') > -1, //IE内核  
     presto: u.indexOf('Presto') > -1, //opera内核  
@@ -28,11 +32,11 @@ export const getBrowserType = () => {
 }
 
 /**
+ * 获取当前系统类型
  *
- *
- * @returns
+ * @returns {String} 当前设备系统类型
  */
-export const getDeviceOS = () => {
+function getDeviceOS(){
   var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows");
   var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") || (navigator.platform == "Macintosh") || (navigator.platform == "MacIntel");
   if (isMac) return "Mac";
@@ -58,10 +62,17 @@ export const getDeviceOS = () => {
 }
 
 /**
+ * 判断当前设备是否是pc
  *
- *
- * @returns
+ * @returns {Boolean} 
  */
-export const isPC = () => {
+function isPC (){
   return getBrowserType().android || getBrowserType().iPad || getBrowserType().iPhone
+}
+
+export{
+  getLanguage,
+  getBrowserType,
+  getDeviceOS,
+  isPC
 }

@@ -1,53 +1,53 @@
 //是否字符串
-export const isString = (o) => {
+function isString(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'String'
 }
 
 //是否数字
-export const isNumber = (o) => {
+function isNumber(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Number'
 }
 
 //是否对象
-export const isObj = (o) => {
+function isObj(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Object'
 }
 
 //是否数组
-export const isArray = (o) => {
+function isArray(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Array'
 }
 
 //是否时间
-export const isDate = (o) => {
+function isDate(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Date'
 }
 
 //是否boolean
-export const isBoolean = (o) => {
+function isBoolean(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean'
 }
 
 //是否函数
-export const isFunction = (o) => {
+function isFunction(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Function'
 }
 
 //是否为null
-export const isNull = (o) => {
+function isNull(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Null'
 }
 
 //是否undefined
-export const isUndefined = (o) => {
+function isUndefined(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Undefined'
 }
 
-export const isBlob = (o) =>{
+function isBlob(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Blob'
 }
 
-export const isFalse = (o) => {
+function isFalse(o) {
   if (o == '' || o == undefined || o == null || o == 'null' || o == 'undefined' || o == 0 || o == false || o == NaN) {
     return true
   } else {
@@ -56,11 +56,28 @@ export const isFalse = (o) => {
 
 }
 
-export const isTrue = (o) => {
+function isTrue(o) {
   return !this.isFalse(o)
 }
 
 // 是否是dom
-export const isElement = (o) => {
+function isElement(o) {
   return Object.prototype.toString.call(o).indexOf('Element') > -1
+}
+
+
+export {
+  isString,
+  isNumber,
+  isObj,
+  isArray,
+  isDate,
+  isBoolean,
+  isFunction,
+  isNull,
+  isUndefined,
+  isBlob,
+  isFalse,
+  isTrue,
+  isElement
 }

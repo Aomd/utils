@@ -1,4 +1,4 @@
-export const formatTime = (time, cFormat) => {
+function formatTime (time, cFormat) {
   if (arguments.length === 0) return null
   if ((time + '').length === 10) {
     time = +time * 1000
@@ -30,4 +30,8 @@ export const formatTime = (time, cFormat) => {
     return value || 0
   })
   return time_str
+}
+
+export{
+  formatTime
 }

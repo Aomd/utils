@@ -1,12 +1,11 @@
 
 
-
 /**
 * @param  {arr} 数组
 * @param  {fn} 回调函数
 * @return {undefined}
 */
-export const each = (arr, fn) => {
+function each  (arr, fn) {
   fn = fn || Function;
   var a = [];
   var args = Array.prototype.slice.call(arguments, 1);
@@ -22,7 +21,7 @@ export const each = (arr, fn) => {
 * @param  {thisObj} this指向
 * @return {Array} 
 */
-export const map = (arr, fn, thisObj) => {
+function map  (arr, fn, thisObj)  {
   var scope = thisObj || window;
   var a = [];
   for (var i = 0, j = arr.length; i < j; ++i) {
@@ -38,7 +37,7 @@ export const map = (arr, fn, thisObj) => {
 * @param  {type} 1：从小到大   2：从大到小   3：随机
 * @return {Array}
 */
-export const sort = (arr, type = 1) => {
+function sort  (arr, type = 1)  {
   return arr.sort((a, b) => {
     switch (type) {
       case 1:
@@ -60,7 +59,7 @@ export const sort = (arr, type = 1) => {
 * @param {Array} arr
 * @returns
 */
-export const unique = (arr) => {
+function unique  (arr)  {
   if (Array.hasOwnProperty('from')) {
     return Array.from(new Set(arr));
   } else {
@@ -83,7 +82,7 @@ export const unique = (arr) => {
 * @param {Array} b
 * @returns
 */
-export const union = (a, b) => {
+function union  (a, b)  {
   var newArr = a.concat(b);
   return this.unique(newArr);
 }
@@ -95,7 +94,7 @@ export const union = (a, b) => {
  * @param {*} b
  * @returns
  */
-export const intersect = (a, b) => {
+function intersect  (a, b)  {
   var _this = this;
   a = this.unique(a);
   return this.map(a, function (o) {
@@ -110,7 +109,7 @@ export const intersect = (a, b) => {
 * @param {*} ele
 * @returns
 */
-export const remove = (arr, ele) => {
+function remove  (arr, ele)  {
   var index = arr.indexOf(ele);
   if (index > -1) {
     arr.splice(index, 1);
@@ -124,7 +123,7 @@ export const remove = (arr, ele) => {
  * @param {*} ary
  * @returns
  */
-export const formArray = (ary) => {
+function formArray (ary)  {
   var arr = [];
   if (Array.isArray(ary)) {
     arr = ary;
@@ -141,7 +140,7 @@ export const formArray = (ary) => {
  * @param {*} arr
  * @returns
  */
-export const max = (arr) => {
+function max  (arr)  {
   return Math.max.apply(null, arr);
 }
 
@@ -151,7 +150,7 @@ export const max = (arr) => {
  * @param {*} arr
  * @returns
  */
-export const min = (arr) => {
+function min  (arr)  {
   return Math.min.apply(null, arr);
 }
 
@@ -161,7 +160,7 @@ export const min = (arr) => {
  * @param {*} arr
  * @returns
  */
-export const sum = (arr) => {
+function sum  (arr)  {
   return arr.reduce((pre, cur) => {
     return pre + cur
   })
@@ -173,7 +172,7 @@ export const sum = (arr) => {
  * @param {*} arr
  * @returns
  */
-export const average = (arr) => {
+function average (arr)  {
   return this.sum(arr) / arr.length
 }
 
@@ -185,6 +184,21 @@ export const average = (arr) => {
  * @param {*} a
  * @param {*} w
  */
-export const where = (a, w) => {
+function where  (a, w)  {
 
+}
+export{
+  each,
+  map,
+  sort,
+  unique,
+  union,
+  intersect,
+  remove,
+  formArray,
+  max,
+  min,
+  sum,
+  average,
+  where
 }

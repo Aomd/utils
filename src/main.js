@@ -22,7 +22,7 @@ import * as Browser from './Browser'
 // object
 import * as Object from './Object'
 
-// 浏览器兼容 加强
+// 浏览器兼容方法加强
 import * as BrowserExtend from './BrowserExtend/base'
 
 export {

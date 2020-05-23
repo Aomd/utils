@@ -8,7 +8,18 @@ export{
   w
 }
 
-import './screen';
+
+
 import './requestAniFrame';
 
-import './alert'
+import { openFullScreen, closeFullScreen, isFullScreen } from './screen';
+
+w.screen.openFullScreen = openFullScreen;
+
+w.screen.closeFullScreen = closeFullScreen;
+
+w.screen.isFullScreen = isFullScreen;
+
+import { alert } from './alert';
+
+w.alert =  alert

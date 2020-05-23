@@ -5,7 +5,7 @@
  * @param {Object} o
  * @returns {Object}
  */
-export  const clone = (o) => {
+function clone (o) {
   return JSON.parse(JSON.stringify(o))
 }
 
@@ -16,13 +16,10 @@ export  const clone = (o) => {
 * @param {Object} o
 * @returns {Number}
 */
-export const size = (o) => {
+function size() {
   return Object.keys(o).length
 }
 
-export const pluck = () => {
-
-}
 
 /**
 * 尝试获取一个未知对象
@@ -31,7 +28,7 @@ export const pluck = () => {
 * @param {String|Array|Number|Array|Object} defined 默认值
 * @returns {Object}
 */
-export const getDefined = (pototype, defined) => {
+function getDefined(pototype, defined) {
   if (typeof pototype !== 'string') {
       return defined;
   }
@@ -56,4 +53,10 @@ export const getDefined = (pototype, defined) => {
       return defined
   }
 
+}
+
+export{
+    clone,
+    size,
+    getDefined
 }

@@ -66,7 +66,7 @@ function averagePolyline(points, val) {
         var total_distance = AMap.GeometryUtil.distance(points[i], points[i + 1])
 
         // 如果第一段余量+第二段总长还不够 val 就跳过直接加上余量
-        if (total_distance + surplus < val && surplus != 0) {
+        if (total_distance + surplus < val) {
             surplus += total_distance
             continue;
         }

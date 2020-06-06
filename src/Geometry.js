@@ -72,7 +72,10 @@ function averagePolyline(points, val) {
         }
 
         // 总段数
-        var total_section = Math.floor(total_distance / val);
+        var temp_total_section = total_distance / val;
+
+        // 向下取整
+        var total_section = Math.floor(temp_total_section)
 
         // 头点计算
         var new_point_start = getPointFromLine(points[i], points[i + 1], val - surplus);
@@ -80,6 +83,11 @@ function averagePolyline(points, val) {
         var new_point_ends = getPointFromLine(new_point_start, points[i + 1], total_section * val)
 
         var temp_val = averageLine(new_point_start, new_point_ends, total_section)
+
+        // 处理 误差数据 -------------------------------------------------------- 进度看实际
+        if (temp_total_section.toFixed(2).split('.')[1] >= 98) {
+            temp_val = temp_val.concat([new_point_ends])
+        }
 
         // 合并结果
         pointAll = pointAll.concat(temp_val);

@@ -22,8 +22,8 @@ function hexToRgb(str) {
  * @param {*} b
  * @returns {string}
  */
-function rgbToHex(r, g, b) {
-  return '#' + (((r & 255) << 16) + ((g & 255) << 8) + (b & 255)).toString(16)
+function rgbToHex(rgb) {
+  return '#' + (((rgb?.r & 255) << 16) + ((rgb?.g & 255) << 8) + (rgb.b & 255)).toString(16)
 }
 
 

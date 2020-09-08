@@ -17,13 +17,11 @@ function hexToRgb(str) {
 /**
  * rgb -> #ffffff 
  *
- * @param {*} r
- * @param {*} g
- * @param {*} b
+ * @param {Object} rgb
  * @returns {string}
  */
 function rgbToHex(rgb) {
-  return '#' + (((rgb?.r & 255) << 16) + ((rgb?.g & 255) << 8) + (rgb.b & 255)).toString(16)
+  return '#' + (((rgb.r & 255) << 16) + ((rgb.g & 255) << 8) + (rgb.b & 255)).toString(16).padStart(6,'0');
 }
 
 

@@ -9,7 +9,7 @@
 export function mouseWheelDirection(evt) {
   var e = evt || event;
   var bool = false;
-  if (e?.wheelDelta > 0 || e?.detail < 0) {
+  if (e.wheelDelta > 0 || e.detail < 0) {
     bool = true;
   } else {
     bool = false;

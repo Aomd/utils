@@ -57,7 +57,7 @@ function isFalse(o) {
 }
 
 function isTrue(o) {
-  return !this.isFalse(o)
+  return isFalse(o)
 }
 
 // 是否是dom

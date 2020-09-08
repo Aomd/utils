@@ -1,7 +1,7 @@
-import * as Utils from './main'
+import * as AomdUtils from './index';
 (function (window) {
   if (typeof window !== "undefined") {
-    window.Utils = Utils
+    window.AomdUtils = AomdUtils
   } else {
     throw new Error('window is not defined')
   }

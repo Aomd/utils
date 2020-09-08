@@ -1,0 +1,39 @@
+{
+  "name": "aomd-utils",
+  "version": "0.0.2",
+  "description": "aomd工具集合",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "index.d.ts",
+    "index.js",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aomd/utils.git"
+  },
+  "keywords": [
+    "tool"
+  ],
+  "author": "Aomd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aomd/utils/issues"
+  },
+  "homepage": "https://github.com/Aomd/utils#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "browserify": "^16.5.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

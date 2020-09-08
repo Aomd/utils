@@ -1,11 +1,3 @@
-/**
-* 字符串小数 toFixed
-* @param  {str} 待处理字符串
-* @return {string} 
-*/
-function toFixed (str){
-	return str.substr(0, str.indexOf('.'))
-}
 
 /**
  * utf16 to utf8
@@ -34,6 +26,5 @@ function utf16to8(str) {
 }
 
 export{
-	utf16to8,
-	toFixed
+	utf16to8
 }

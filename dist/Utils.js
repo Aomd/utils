@@ -635,6 +635,7 @@ function getPointFromLine(point1, point2, m) {
   var x2 = point2[0];
   var y2 = point2[1]; // AMap.GeometryUtil  https://lbs.amap.com/api/javascript-api/reference/math 
   // AMap.GeometryUtil.distance 两点求距离 m
+  // @ts-ignore
 
   var temp_m = AMap.GeometryUtil.distance(point1, point2);
   var num = temp_m / m;
@@ -661,6 +662,7 @@ function averagePolyline(points, val) {
     // 总长
     // AMap.GeometryUtil  https://lbs.amap.com/api/javascript-api/reference/math 
     // AMap.GeometryUtil.distance 两点求距离 m
+    // @ts-ignore
     var total_distance = AMap.GeometryUtil.distance(points[i], points[i + 1]); // 如果第一段余量+第二段总长还不够 val 就跳过直接加上余量
 
     if (total_distance + surplus < val) {
@@ -677,6 +679,7 @@ function averagePolyline(points, val) {
 
     var new_point_ends = getPointFromLine(new_point_start, points[i + 1], total_section * val);
     var temp_val = averageLine(new_point_start, new_point_ends, total_section); // 处理 误差数据 -------------------------------------------------------- 进度看实际
+    // @ts-ignore
 
     if (temp_total_section.toFixed(2).split('.')[1] >= 98) {
       temp_val = temp_val.concat([new_point_ends]);
@@ -1225,61 +1228,71 @@ exports.isFunction = isFunction;
 exports.isNull = isNull;
 exports.isUndefined = isUndefined;
 exports.isBlob = isBlob;
+exports.isElement = isElement;
+exports.toString = toString;
 exports.isFalse = isFalse;
 exports.isTrue = isTrue;
-exports.isElement = isElement;
 
 //是否字符串
 function isString(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'String';
+  return toString(o).slice(8, -1) === 'String';
 } //是否数字
 
 
 function isNumber(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Number';
+  return toString(o).slice(8, -1) === 'Number';
 } //是否对象
 
 
 function isObj(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Object';
+  return toString(o).slice(8, -1) === 'Object';
 } //是否数组
 
 
 function isArray(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Array';
+  return toString(o).slice(8, -1) === 'Array';
 } //是否时间
 
 
 function isDate(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Date';
+  return toString(o).slice(8, -1) === 'Date';
 } //是否boolean
 
 
 function isBoolean(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean';
+  return toString(o).slice(8, -1) === 'Boolean';
 } //是否函数
 
 
 function isFunction(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Function';
+  return toString(o).slice(8, -1) === 'Function';
 } //是否为null
 
 
 function isNull(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Null';
+  return toString(o).slice(8, -1) === 'Null';
 } //是否undefined
 
 
 function isUndefined(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Undefined';
+  return toString(o).slice(8, -1) === 'Undefined';
 }
 
 function isBlob(o) {
-  return Object.prototype.toString.call(o).slice(8, -1) === 'Blob';
+  return toString(o).slice(8, -1) === 'Blob';
+} // 是否是dom
+
+
+function isElement(o) {
+  return toString(o).indexOf('Element') > -1;
+}
+
+function toString(o) {
+  return Object.prototype.toString.call(o);
 }
 
 function isFalse(o) {
-  if (o == '' || o == undefined || o == null || o == 'null' || o == 'undefined' || o == 0 || o == false || o == NaN) {
+  if (o == '' || o == undefined || o == null || o == 'null' || o == 'undefined' || o == 0 || o == false || isNaN(o)) {
     return true;
   } else {
     return false;
@@ -1288,11 +1301,6 @@ function isFalse(o) {
 
 function isTrue(o) {
   return isFalse(o);
-} // 是否是dom
-
-
-function isElement(o) {
-  return Object.prototype.toString.call(o).indexOf('Element') > -1;
 }
 },{}],15:[function(require,module,exports){
 "use strict";
@@ -1312,7 +1320,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 /**
  * url 转 js 对象
 * @param  {string} getUrl 
-* @return {Object} obj
+* @return {Object}
 */
 function urlToObject(getUrl) {
   var obj = {};
@@ -1339,13 +1347,25 @@ function urlToObject(getUrl) {
   }
 
   return obj;
-} // base64转blob
+}
+/**
+ * base64转blob
+ *
+ * @param {string} base64
+ * @returns {Blob}
+ */
 
 
 function base64toBlob(base64) {
   var arr = base64.split(',');
-  var mime = arr[0].match(/:(.*?);/)[1];
-  var bstr = atob(arr[1]);
+  var matchSize = arr[0].match(/:(.*?);/);
+  var mime = 'application/octet-stream';
+
+  if (matchSize && 'length' in matchSize && matchSize.length >= 2) {
+    mime = arr[0].match(/:(.*?);/)[1];
+  }
+
+  var bstr = atob(arr[arr.length - 1]);
   var n = bstr.length;
   var u8arr = new Uint8Array(n);
 

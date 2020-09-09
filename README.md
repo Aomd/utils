@@ -2,14 +2,32 @@
 
 预览地址 暂无
 
-完整组件列表和引入方式（完整组件列表以 main.js 为准）
+安装
+``` bash
+npm i aomd-utils
 ```
+
+完整组件列表和引入方式（完整组件列表以 index.js 为准）
+``` javascript
 import {
-  Type,
-  Date,
   Array,
-  Number,
-  Url,
   Browser,
-} from './src/main'
+  Color,
+  Date,
+  Geometry,
+  Mouse,
+  Number,
+  Object,
+  Optimize,
+  Screen,
+  String,
+  Type,
+  Url,
+  cancelAnimationFrame,
+  exitFullscreen,
+  fullscreenElement,
+  indexedDB,
+  requestAnimationFrame,
+  requestFullscreen
+} from 'aomd-utils'
 ```

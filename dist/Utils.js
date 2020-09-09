@@ -1,7 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -23,57 +23,57 @@ var _exportNames = {
 };
 exports.Url = exports.Type = exports.String = exports.Screen = exports.Optimize = exports.Object = exports.Number = exports.Mouse = exports.Geometry = exports.Date = exports.Color = exports.Browser = exports.Array = void 0;
 
-var Array = _interopRequireWildcard(require("./src/Array"));
+var _Array = _interopRequireWildcard(require("./src/Array"));
 
-exports.Array = Array;
+exports.Array = _Array;
 
-var Browser = _interopRequireWildcard(require("./src/Browser"));
+var _Browser = _interopRequireWildcard(require("./src/Browser"));
 
-exports.Browser = Browser;
+exports.Browser = _Browser;
 
-var Color = _interopRequireWildcard(require("./src/Color"));
+var _Color = _interopRequireWildcard(require("./src/Color"));
 
-exports.Color = Color;
+exports.Color = _Color;
 
-var Date = _interopRequireWildcard(require("./src/Date"));
+var _Date = _interopRequireWildcard(require("./src/Date"));
 
-exports.Date = Date;
+exports.Date = _Date;
 
-var Geometry = _interopRequireWildcard(require("./src/Geometry"));
+var _Geometry = _interopRequireWildcard(require("./src/Geometry"));
 
-exports.Geometry = Geometry;
+exports.Geometry = _Geometry;
 
-var Mouse = _interopRequireWildcard(require("./src/Mouse"));
+var _Mouse = _interopRequireWildcard(require("./src/Mouse"));
 
-exports.Mouse = Mouse;
+exports.Mouse = _Mouse;
 
-var Number = _interopRequireWildcard(require("./src/Number"));
+var _Number = _interopRequireWildcard(require("./src/Number"));
 
-exports.Number = Number;
+exports.Number = _Number;
 
-var Object = _interopRequireWildcard(require("./src/Object"));
+var _Object = _interopRequireWildcard(require("./src/Object"));
 
-exports.Object = Object;
+exports.Object = _Object;
 
-var Optimize = _interopRequireWildcard(require("./src/Optimize"));
+var _Optimize = _interopRequireWildcard(require("./src/Optimize"));
 
-exports.Optimize = Optimize;
+exports.Optimize = _Optimize;
 
-var Screen = _interopRequireWildcard(require("./src/Screen"));
+var _Screen = _interopRequireWildcard(require("./src/Screen"));
 
-exports.Screen = Screen;
+exports.Screen = _Screen;
 
-var String = _interopRequireWildcard(require("./src/String"));
+var _String = _interopRequireWildcard(require("./src/String"));
 
-exports.String = String;
+exports.String = _String;
 
-var Type = _interopRequireWildcard(require("./src/Type"));
+var _Type = _interopRequireWildcard(require("./src/Type"));
 
-exports.Type = Type;
+exports.Type = _Type;
 
-var Url = _interopRequireWildcard(require("./src/Url"));
+var _Url = _interopRequireWildcard(require("./src/Url"));
 
-exports.Url = Url;
+exports.Url = _Url;
 
 var _cancelAnimationFrame = require("./src/browser/compatible/cancelAnimationFrame");
 
@@ -159,9 +159,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 },{"./src/Array":3,"./src/Browser":4,"./src/Color":5,"./src/Date":6,"./src/Geometry":7,"./src/Mouse":8,"./src/Number":9,"./src/Object":10,"./src/Optimize":11,"./src/Screen":12,"./src/String":13,"./src/Type":14,"./src/Url":15,"./src/browser/compatible/cancelAnimationFrame":16,"./src/browser/compatible/exitFullscreen":17,"./src/browser/compatible/fullscreenElement":18,"./src/browser/compatible/indexedDB":19,"./src/browser/compatible/requestAnimationFrame":20,"./src/browser/compatible/requestFullscreen":21}],2:[function(require,module,exports){
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var AomdUtils = _interopRequireWildcard(require("./index"));
+var AomdUtils = _interopRequireWildcard(require("./build"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -174,7 +174,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     throw new Error('window is not defined');
   }
 })(window);
-},{"./index":1}],3:[function(require,module,exports){
+},{"./build":1}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -544,7 +544,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.formatTime = formatTime;
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function formatTime(time, cFormat) {
   if (arguments.length === 0) return null;
@@ -1165,7 +1165,7 @@ function closeFullScreen() {
 
 
 function isFullScreen() {
-  if (_fullscreenElement.fullscreenElement) {
+  if ((0, _fullscreenElement.fullscreenElement)()) {
     // 全屏
     return true;
   } else {
@@ -1303,6 +1303,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.urlToObject = urlToObject;
 exports.base64toBlob = base64toBlob;
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 /**
  * url 转 js 对象
 * @param  {string} getUrl 
@@ -1315,29 +1321,20 @@ function urlToObject(getUrl) {
   if (index > -1) {
     var getUrl = getUrl.slice(index + 1);
     var arr = getUrl.split('&');
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+
+    var _iterator = _createForOfIteratorHelper(arr),
+        _step;
 
     try {
-      for (var _iterator = arr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var item = _step.value;
         var res = item.split('=');
         obj[res[0]] = res[1];
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _iterator.e(err);
     } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-          _iterator["return"]();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
+      _iterator.f();
     }
   }
 
@@ -1380,20 +1377,38 @@ exports.cancelAnimationFrame = cancelAnimationFrame;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.exitFullscreen = void 0;
-// 退出全屏
-var exitFullscreen = document.exitFullscreen || document.msExitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen;
 exports.exitFullscreen = exitFullscreen;
+
+// 退出全屏
+function exitFullscreen() {
+  if ('exitFullscreen' in document) {
+    return document.exitFullscreen();
+  }
+
+  if ('msExitFullscreen' in document) {
+    return document.msExitFullscreen();
+  }
+
+  if ('mozCancelFullScreen' in document) {
+    return document.mozCancelFullScreen();
+  }
+
+  if ('webkitExitFullscreen' in document) {
+    return document.webkitExitFullscreen();
+  }
+}
 },{}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fullscreenElement = void 0;
-// 是否全屏
-var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
 exports.fullscreenElement = fullscreenElement;
+
+// 是否全屏
+function fullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+}
 },{}],19:[function(require,module,exports){
 "use strict";
 
@@ -1423,8 +1438,24 @@ exports.requestAnimationFrame = requestAnimationFrame;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.requestFullscreen = void 0;
-// 全屏
-var requestFullscreen = document.documentElement.requestFullscreen || document.documentElement.msRequestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.webkitRequestFullscreen;
 exports.requestFullscreen = requestFullscreen;
+
+// 全屏
+function requestFullscreen(options) {
+  if ('requestFullscreen' in document.documentElement) {
+    return document.documentElement.requestFullscreen(options);
+  }
+
+  if ('msRequestFullscreen' in document.documentElement) {
+    return document.documentElement.msRequestFullscreen(options);
+  }
+
+  if ('mozRequestFullScreen' in document.documentElement) {
+    return document.documentElement.mozRequestFullScreen(options);
+  }
+
+  if ('webkitRequestFullscreen' in document.documentElement) {
+    return document.documentElement.webkitRequestFullscreen(options);
+  }
+}
 },{}]},{},[2]);

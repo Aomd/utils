@@ -1,4 +1,4 @@
-import * as AomdUtils from './index';
+import * as AomdUtils from './build';
 (function (window) {
   if (typeof window !== "undefined") {
     window.AomdUtils = AomdUtils

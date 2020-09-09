@@ -38,6 +38,7 @@ function getPointFromLine(point1, point2, m) {
     var y2 = point2[1];
     // AMap.GeometryUtil  https://lbs.amap.com/api/javascript-api/reference/math 
     // AMap.GeometryUtil.distance 两点求距离 m
+    // @ts-ignore
     var temp_m = AMap.GeometryUtil.distance(point1, point2)
     var num = temp_m / m
     var x = (x2 + (num - 1) * x1) / num;
@@ -63,6 +64,7 @@ function averagePolyline(points, val) {
         // 总长
         // AMap.GeometryUtil  https://lbs.amap.com/api/javascript-api/reference/math 
         // AMap.GeometryUtil.distance 两点求距离 m
+        // @ts-ignore
         var total_distance = AMap.GeometryUtil.distance(points[i], points[i + 1])
 
         // 如果第一段余量+第二段总长还不够 val 就跳过直接加上余量
@@ -85,6 +87,7 @@ function averagePolyline(points, val) {
         var temp_val = averageLine(new_point_start, new_point_ends, total_section)
 
         // 处理 误差数据 -------------------------------------------------------- 进度看实际
+        // @ts-ignore
         if (temp_total_section.toFixed(2).split('.')[1] >= 98) {
             temp_val = temp_val.concat([new_point_ends])
         }

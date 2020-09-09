@@ -1,5 +1,5 @@
-declare function urlToObject(getUrl:string): boolean;
-declare function base64toBlob(base64:string): boolean;
+declare function urlToObject(getUrl:string): object;
+declare function base64toBlob(base64:string): Blob;
 
 export {
     urlToObject,

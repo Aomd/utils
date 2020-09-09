@@ -1,17 +1,17 @@
-declare function isString(o: object): boolean;
-declare function isNumber(o: object): boolean;
-declare function isObj(o: object): boolean;
-declare function isArray(o: object): boolean;
-declare function isDate(o: object): boolean;
-declare function isBoolean(o: object): boolean;
-declare function isFunction(o: object): boolean;
-declare function isNull(o: object): boolean;
-declare function isUndefined(o: object): boolean;
-declare function isBlob(o: object): boolean;
-declare function isFalse(o: object): boolean;
-declare function isTrue(o: object): boolean;
-declare function isElement(o: object): boolean;
-
+declare function isString(o: any): boolean;
+declare function isNumber(o: any): boolean;
+declare function isObj(o: any): boolean;
+declare function isArray(o: any): boolean;
+declare function isDate(o: any): boolean;
+declare function isBoolean(o: any): boolean;
+declare function isFunction(o: any): boolean;
+declare function isNull(o: any): boolean;
+declare function isUndefined(o: any): boolean;
+declare function isBlob(o: any): boolean;
+declare function isFalse(o: any): boolean;
+declare function isTrue(o: any): boolean;
+declare function isElement(o: any): boolean;
+declare function toString(o: any): string;
 export {
   isString,
   isNumber,
@@ -25,5 +25,6 @@ export {
   isBlob,
   isFalse,
   isTrue,
-  isElement
+  isElement,
+  toString
 }

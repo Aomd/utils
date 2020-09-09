@@ -1,7 +1,7 @@
 /**
  * url 转 js 对象
 * @param  {string} getUrl 
-* @return {Object} obj
+* @return {Object}
 */
 function urlToObject(getUrl) {
   var obj = {};
@@ -17,11 +17,20 @@ function urlToObject(getUrl) {
   return obj
 }
 
-// base64转blob
+/**
+ * base64转blob
+ *
+ * @param {string} base64
+ * @returns {Blob}
+ */
 function base64toBlob(base64) {
   var arr = base64.split(',')
-  var mime = arr[0].match(/:(.*?);/)[1];
-  var bstr = atob(arr[1]);
+  var matchSize = arr[0].match(/:(.*?);/);
+  var mime = 'application/octet-stream';
+  if (matchSize && 'length' in matchSize && matchSize.length >= 2) {
+    mime = arr[0].match(/:(.*?);/)[1];
+  }
+  var bstr = atob(arr[arr.length-1]);
   var n = bstr.length;
   var u8arr = new Uint8Array(n)
   while (n--) {
@@ -30,7 +39,7 @@ function base64toBlob(base64) {
   return new Blob([u8arr], { type: mime });
 }
 
-export{
+export {
   urlToObject,
   base64toBlob
 }

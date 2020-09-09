@@ -1,5 +1,18 @@
 // 退出全屏
-var exitFullscreen = document.exitFullscreen || document.msExitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen
+function exitFullscreen() {
+  if ('exitFullscreen' in document) {
+    return document.exitFullscreen()
+  }
+  if ('msExitFullscreen' in document) {
+    return document.msExitFullscreen()
+  }
+  if ('mozCancelFullScreen' in document) {
+    return document.mozCancelFullScreen()
+  }
+  if ('webkitExitFullscreen' in document) {
+    return document.webkitExitFullscreen()
+  }
+}
 
 export {
   exitFullscreen

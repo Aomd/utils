@@ -1,5 +1,5 @@
-declare const fullscreenElement: Element | null;
+declare function fullscreenElement(): Element | null;
 
-export  {
+export {
   fullscreenElement
 }

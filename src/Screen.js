@@ -31,7 +31,7 @@ function closeFullScreen() {
  * @returns
  */
 function isFullScreen() {
-  if (fullscreenElement) {
+  if (fullscreenElement()) {
     // 全屏
     return true;
   } else {

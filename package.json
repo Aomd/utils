@@ -1,6 +1,6 @@
 {
   "name": "aomd-utils",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "aomd工具集合",
   "main": "index.js",
   "types": "index.d.ts",
@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/Aomd/utils#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "browserify": "^16.5.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "browserify": "^16.5.2",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-uglify": "^3.0.2",

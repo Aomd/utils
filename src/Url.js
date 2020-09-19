@@ -17,6 +17,26 @@ function urlToObject(getUrl) {
   return obj
 }
 
+
+function objectToUrl(obj, path) {
+  var _path = path || '';
+  var bool = _path.indexOf('?') > -1;
+  if (bool) {
+    // 有问号 保留参数
+    var _obj = urlToObject(_path);
+    var obj = {
+      ..._obj,
+      ...obj
+    }
+  }
+  var str = '?';
+  for (var key in obj) {
+    str += key + '=' + obj[key] + '&';
+  }
+  return str.slice(0,-1);
+}
+
+
 /**
  * base64转blob
  *
@@ -41,5 +61,6 @@ function base64toBlob(base64) {
 
 export {
   urlToObject,
-  base64toBlob
+  base64toBlob,
+  objectToUrl
 }

@@ -7,6 +7,32 @@ function random (min, max)  {
 }
 
 
+/**
+ * 高低位转换
+ *
+ * @param {*} val
+ * @returns
+ */
+function swap_endian(val) {
+  val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
+  return (val << 16) | (val >> 16);
+}
+
+/**
+ * int 转byte
+ *
+ * @param {*} value
+ * @returns
+ */
+function intTobytes(value) {
+  var uint8 = new Uint8Array(4);
+  uint8[0] = (value >> 24) & 0xFF
+  uint8[1] = (value >> 16) & 0xFF
+  uint8[2] = (value >> 8) & 0xFF
+  uint8[3] = value & 0xFF
+  return uint8;
+}
+
 function numberToChinese  (num)  {
   var AA = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
   var BB = ["", "十", "百", "仟", "萬", "億", "点", ""];
@@ -203,5 +229,7 @@ function changeToChinese  (Num)  {
 export{
   random,
   numberToChinese,
-  changeToChinese
+  changeToChinese,
+  swap_endian,
+  intTobytes
 }

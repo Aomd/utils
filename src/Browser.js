@@ -131,7 +131,8 @@ function isCanvas() {
 }
 
 function isWebgl() {
-  return !!window.WebGLRenderingContext;
+  var elem = document.createElement('canvas');
+  return !!(window.WebGLRenderingContext && ( elem.getContext( 'webgl' ) || elem.getContext( 'experimental-webgl' ) ));
 }
 
 function isSvg() {

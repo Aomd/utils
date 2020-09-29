@@ -149,43 +149,44 @@ function _parseExif(uint8Array) {
   }
   // // IFD偏移
   // var offset = header.slice(4);
-  if (byte_align === 'I') {
-    for (var i = uint8Array.length; i > 0; i--) {
+  var width = 0;
+  var height = 0;
+  for (let i = uint8Array.length; i > 0; i--) {
+    if (uint8Array[i] == 0
+      && uint8Array[i + 1] == 0
+      && uint8Array[i + 2] == 0
+      && uint8Array[i + 3] == 0
+      && uint8Array[i + 4] == 0
+      && uint8Array[i + 5] == 0
+      && uint8Array[i + 6] == 0
+      && uint8Array[i + 7] == 0
+      && uint8Array[i + 8] == 0
+      && uint8Array[i + 9] == 0
+      && uint8Array[i + 11] != 0
+      && uint8Array[i + 12] == 0
+      && uint8Array[i + 13] == 0
+      && uint8Array[i + 15] != 0
+      && i % 2 == 0
+    ) {
+      debugger
+      width = uint8Array.slice((i + 8), (i + 12))
+      height = uint8Array.slice((i + 12), (i + 16))
+      break;
+    }
+  }
+  if (width == 0 && height == 0) {
+    for (let i = uint8Array.length; i > 0; i--) {
       if (uint8Array[i] == 0xff && uint8Array[i + 1] == 0xc0 && uint8Array[i + 2] == 0x0) {
-        var height = uint8Array.slice((i + 5), (i + 7))
-        var width = uint8Array.slice((i + 7), (i + 9))
-        return {
-          width,
-          height
-        }
+        height = uint8Array.slice((i + 5), (i + 7))
+        width = uint8Array.slice((i + 7), (i + 9))
+        break;
       }
     }
-  } else if (byte_align === 'M') {
-    for (var i = uint8Array.length; i > 0; i--) {
-      if (uint8Array[i] == 0 
-        && uint8Array[i + 1] == 0 
-        && uint8Array[i + 2] == 0 
-        && uint8Array[i + 3] == 0 
-        && uint8Array[i + 4] == 0 
-        && uint8Array[i + 5] == 0 
-        && uint8Array[i + 6] == 0 
-        && uint8Array[i + 7] == 0 
-        && uint8Array[i + 8] == 0 
-        && uint8Array[i + 9] == 0 
-        && uint8Array[i + 11] != 0 
-        && uint8Array[i + 12] == 0 
-        && uint8Array[i + 13] == 0 
-        && uint8Array[i + 15] != 0 
-        && i % 2 == 0
-        ) {
-        var height = uint8Array.slice((i + 8), (i + 12))
-        var width = uint8Array.slice((i + 12), (i + 16))
-        return {
-          width,
-          height
-        }
-      }
-    }
+  }
+
+  return {
+    width,
+    height
   }
 }
 

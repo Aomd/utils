@@ -1,15 +1,17 @@
-function formatTime (time, cFormat) {
-  if (arguments.length === 0) return null
-  if ((time + '').length === 10) {
-    time = +time * 1000
-  }
+/**
+ * 格式化时间日期
+ *
+ * @export
+ * @param {*} [time=new Date()]
+ * @param {string} [format='{y}-{m}-{d} {h}:{i}:{s}']
+ * @returns
+ */
+export function formatTime (time = new Date(), format = '{y}-{m}-{d} {h}:{i}:{s}') {
 
-  var format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}',
-    date
-  if (typeof time === 'object') {
-    date = time
-  } else {
-    date = new Date(time)
+  try {
+    var date = new Date(time)
+  } catch (error) {
+    throw new Error(error);
   }
 
   var formatObj = {
@@ -32,6 +34,3 @@ function formatTime (time, cFormat) {
   return time_str
 }
 
-export{
-  formatTime
-}

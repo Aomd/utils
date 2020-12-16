@@ -5,7 +5,7 @@
  * @param {*} str
  * @returns
  */
-function utf16to8(str) {
+export function utf16to8(str) {
 	var out, i, len, c;
 	out = "";
 	len = str.length;
@@ -25,6 +25,11 @@ function utf16to8(str) {
 	return out;
 }
 
-export{
-	utf16to8
+/**
+* 自定义函数名：PrefixZero
+* @param num： 被操作数
+* @param n： 固定的总位数
+*/
+export function prefixZero(num, n = 0) {
+    return (Array(n).join('0') + num).slice(-n);
 }

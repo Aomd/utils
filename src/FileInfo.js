@@ -1,3 +1,5 @@
+import { prefixZero } from "./String"
+
 var files = {
   '74,70,73,70': {
     sign: 'JFIF',
@@ -112,7 +114,7 @@ var files = {
 
 function imageInfo(arraybuffer) {
   var uint8Array = Array.from(new Uint8Array(arraybuffer))
-  var uint8Array_string = uint8Array.join();
+  var uint8Array_string = uint8Array.slice(0, 30).join();
   for (var key in files) {
     if (uint8Array_string.includes(key)) {
       if ('_width' in files[key]) {
@@ -131,7 +133,7 @@ function imageInfo(arraybuffer) {
 function toHexJoin(ary) {
   var hex_str = '';
   ary.map((data) => {
-    hex_str += data.toString(16)
+    hex_str += prefixZero(data.toString(16), 2)
   })
   return +('0x' + hex_str)
 }
